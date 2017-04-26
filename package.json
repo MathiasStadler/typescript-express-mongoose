@@ -4,7 +4,17 @@
   "description": "express in typescript",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "yarnclean":"rm -rf node_modules .yarnclean && yarn",
+    "clean": "rm -rf dist",
+    "build": "rm -rf dist; tsc; mkdirp dist/data; copyfiles src/data views/* dist/",
+    "start": "concurrently --kill-others && nodemon -e ts  --exec \"yarn run myapp\"",
+    "myapp": "node dist/app.js",
+    "test": "concurrently --kill-others && nodemon -e ts  --exec \"yarn run testmyapp\"",
+    "testmyapp": "mocha --require=babel-register --compilers ts:ts-node/register,tsx:ts-node/register 'test/**/*.test.ts' --bail",
+    "tslint": "tslint --project tsconfig.json --type-check -c tslint.json 'src/**/*.ts'",
+    "tslint-typecheck": " tslint --type-check --project tsconfig.json 'src/**/*.ts'",
+    "coverage": "nyc yarn run testmyapp",
+    "dailyrun": "yarn run clean && yarn run build && yarn run testmyapp && yarn run coverage"
   },
   "repository": {
     "type": "git",
@@ -26,5 +36,76 @@
   "bugs": {
     "url": "https://github.com/MathiasStadler/typescript-express-mongoose/issues"
   },
-  "homepage": "https://github.com/MathiasStadler/typescript-express-mongoose#readme"
+  "homepage": "https://github.com/MathiasStadler/typescript-express-mongoose#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
+    "errorhandler": "^1.4.3",
+    "express": "^4.14.0",
+    "method-override": "^2.3.6",
+    "mkdirp": "^0.5.1",
+    "mongoose": "^4.8.7",
+    "morgan": "^1.7.0",
+    "pug": "^2.0.0-beta6",
+    "ts-node": "^2.1.0"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^1.0.0",
+    "@types/body-parser": "0.0.33",
+    "@types/chai": "^3.4.35",
+    "@types/chai-http": "^0.0.30",
+    "@types/cookie-parser": "^1.3.30",
+    "@types/debug": "^0.0.29",
+    "@types/errorhandler": "0.0.30",
+    "@types/express": "^4.0.35",
+    "@types/method-override": "0.0.29",
+    "@types/mocha": "^2.2.40",
+    "@types/mongoose": "^4.7.8",
+    "@types/morgan": "^1.7.32",
+    "@types/node": "^6.0.65",
+    "@types/node-notifier": "^0.0.28",
+    "babel-register": "^6.24.1",
+    "bcrypt": "^1.0.2",
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "concurrently": "^3.4.0",
+    "copy-dir": "^0.3.0",
+    "copyfiles": "1.2.0",
+    "eslint": "^3.19.0",
+    "eslint-config-google": "^0.7.1",
+    "livereload": "^0.6.2",
+    "mocha": "^3.2.0",
+    "mocha-logger": "^1.0.5",
+    "mocha-notifier-reporter": "^0.1.2",
+    "node-notifier": "^5.1.2",
+    "nodemon": "^1.11.0",
+    "nyc": "^10.2.0",
+    "protractor": "^5.1.1",
+    "tslint": "^5.1.0",
+    "tslint-eslint-rules": "^4.0.0",
+    "typescript": "^2.2.1"
+  },
+  "nyc": {
+    "include": [
+      "src/*.ts",
+      "src/**/*.ts"
+    ],
+    "exclude": [
+      "typings",
+      "**/*.d.ts"
+    ],
+    "extension": [
+      ".ts",
+      ".tsx"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "reporter": [
+      "json",
+      "html",
+      "lcov"
+    ],
+    "all": true
+  }
 }

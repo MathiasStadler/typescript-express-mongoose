@@ -61,10 +61,10 @@ describe("GET invalid endpoint ", () => {
             .then((res) => {
 
 console.log(res);
-expect(res).should.be.html;
+//expect(res).should.be.html;
 
 
-// expect(res).to.have.status(200);
+ expect(res).to.have.status(200);
 // expect(res).to.be.json;
 
             });
