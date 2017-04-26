@@ -1,4 +1,10 @@
-import mongoose = require("mongoose");
+import mongoose = require('mongoose');
+/**
+ *
+ *
+ * @interface IWrite
+ * @template T
+ */
 interface IWrite<T> {
     create(item: T, callback: (error: any, result: any) => void): void;
     update(id: string, item: T, callback: (error: any, result: any) => void): void;

@@ -1,5 +1,12 @@
-import * as express from "express";
+import * as express from 'express';
 
+/**
+ *
+ *
+ * @param {express.Request} request
+ * @param {express.Response} response
+ * @param {express.NextFunction} next
+ */
 const requestLogger: express.RequestHandler = (
     request: express.Request,
     response: express.Response,
@@ -10,6 +17,7 @@ const requestLogger: express.RequestHandler = (
     next();
 };
 
+// tslint:disable-next-line:export-name
 export = requestLogger;
 
 // from here

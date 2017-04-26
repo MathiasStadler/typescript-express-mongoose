@@ -1,9 +1,17 @@
-import IRead = require("./../interfaces/base/read.interface");
-import IWrite = require("./../interfaces/base/write.interfaces");
-import IUserModel = require("./../../models/interfaces/model.user.interface");
+import IRead from './../interfaces/base/read.interface';
+import IWrite from './../interfaces/base/write.interfaces';
+import IUserModel from  './../../models/interfaces/model.user.interface';
 
-import mongoose = require("mongoose");
+import * as mongoose from 'mongoose';
 
+/**
+ *
+ *
+ * @class RepositoryBase
+ * @implements {IRead<T>}
+ * @implements {IWrite<T>}
+ * @template T
+ */
 class RepositoryBase<T extends mongoose.Document> implements IRead<T>, IWrite<T> {
 
     private model: mongoose.Model<mongoose.Document>;
@@ -24,6 +32,7 @@ class RepositoryBase<T extends mongoose.Document> implements IRead<T>, IWrite<T>
         this.model.update({ id: this.toObjectId(id) }, item, callback);
     }
 
+    // tslint:disable-next-line:no-reserved-keywords
     public delete(id: string, callback: (error: any, result: any) => void) {
         this.model.remove({ id: this.toObjectId(id) }, (err) => callback(err, null));
     }
@@ -37,4 +46,5 @@ class RepositoryBase<T extends mongoose.Document> implements IRead<T>, IWrite<T>
     }
 }
 
+// tslint:disable-next-line:export-name
 export = RepositoryBase;

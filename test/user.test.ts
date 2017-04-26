@@ -15,7 +15,7 @@ import app from "../src/app";
 
 import notifier = require("node-notifier");
 
-import IUserModel = require("./../src/models/interfaces/model.user.interface");
+import * as IUserModel from './../src/models/interfaces/model.user.interface';
 
 chai.use(chaiHttp);
 

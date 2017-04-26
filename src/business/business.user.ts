@@ -1,8 +1,14 @@
-import UserRepository = require("./../repository/user.repository");
-import IUserBusiness = require("./interfaces/business.user.interface");
-import IUserModel = require("./../models/interfaces/model.user.interface");
-import UserModel = require("./../models/model.user");
+import UserRepository = require('./../repository/user.repository');
+import IUserBusiness = require('./interfaces/business.user.interface');
+import IUserModel = require('./../models/interfaces/model.user.interface');
+import UserModel = require('./../models/model.user');
 
+/**
+ *
+ *
+ * @class UserBusiness
+ * @implements {IUserBusiness}
+ */
 class UserBusiness implements IUserBusiness {
     private userRepository: UserRepository;
 
@@ -29,6 +35,7 @@ class UserBusiness implements IUserBusiness {
         });
     }
 
+    // tslint:disable-next-line:no-reserved-keywords
     public delete(id: string, callback: (error: any, result: any) => void) {
         this.userRepository.delete(id, callback);
     }

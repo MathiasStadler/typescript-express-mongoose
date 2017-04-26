@@ -1,5 +1,10 @@
-import IUserModel = require("./interfaces/model.user.interface");
+import IUserModel from './interfaces/model.user.interface';
 
+/**
+ *
+ *
+ * @class UserModel
+ */
 class UserModel {
 
     private userModel: IUserModel;
@@ -29,4 +34,4 @@ class UserModel {
 
 Object.seal(UserModel);
 
-export =  UserModel;
+export default UserModel;
