@@ -1,0 +1,30 @@
+{
+  "name": "typescript-express-mongoose",
+  "version": "0.0.1",
+  "description": "express in typescript",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MathiasStadler/typescript-express-mongoose.git"
+  },
+  "keywords": [
+    "typescript",
+    "express",
+    "yarn",
+    "mongoose",
+    "mongodb",
+    "vscode",
+    "mocha",
+    "nyc",
+    "istanbul"
+  ],
+  "author": "Mathias Stadler",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MathiasStadler/typescript-express-mongoose/issues"
+  },
+  "homepage": "https://github.com/MathiasStadler/typescript-express-mongoose#readme"
+}
