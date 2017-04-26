@@ -4,7 +4,7 @@
   "description": "express in typescript",
   "main": "app.js",
   "scripts": {
-    "yarnclean":"rm -rf node_modules .yarnclean && yarn",
+    "yarnclean": "rm -rf node_modules .yarnclean && yarn",
     "clean": "rm -rf dist",
     "build": "rm -rf dist; tsc; mkdirp dist/data; copyfiles src/data views/* dist/",
     "start": "concurrently --kill-others && nodemon -e ts  --exec \"yarn run myapp\"",
@@ -83,6 +83,7 @@
     "protractor": "^5.1.1",
     "tslint": "^5.1.0",
     "tslint-eslint-rules": "^4.0.0",
+    "tslint-microsoft-contrib": "^4.0.1",
     "typescript": "^2.2.1"
   },
   "nyc": {
