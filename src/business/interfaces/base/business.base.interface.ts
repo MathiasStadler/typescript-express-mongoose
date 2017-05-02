@@ -14,5 +14,5 @@ import IReadCommonBuisiness from './../common/business.common.read.interfaces';
  */
 interface IBaseBusiness<T> extends IReadCommonBuisiness<T>, IWriteCommonBusiness<T> {
 }
-// tslint:disable-next-line:export-name
+// tslint:disable:export-name no-default-export
 export default IBaseBusiness;

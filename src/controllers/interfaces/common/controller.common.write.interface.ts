@@ -5,4 +5,4 @@ interface IWriteCommonController {
     delete: express.RequestHandler;
 }
 
-export = IWriteCommonController;
+export default IWriteCommonController;

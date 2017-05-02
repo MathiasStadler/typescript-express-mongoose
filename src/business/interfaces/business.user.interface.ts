@@ -11,5 +11,5 @@ import IUserModel from './../../models/interfaces/model.user.interface';
 interface IUserBusiness extends BaseBusiness<IUserModel> {
 
 }
-// tslint:disable-next-line:export-name
-export = IUserBusiness;
+// tslint:disable:export-name no-default-export
+export default IUserBusiness;

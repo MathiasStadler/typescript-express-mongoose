@@ -1,6 +1,6 @@
-import IRead from './../interfaces/base/read.interface';
-import IWrite from './../interfaces/base/write.interfaces';
-import IUserModel from  './../../models/interfaces/model.user.interface';
+import  IRead  from './../interfaces/base/read.interface';
+import  IWrite from './../interfaces/base/write.interfaces';
+import  IUserModel from  './../../models/interfaces/model.user.interface';
 
 import * as mongoose from 'mongoose';
 
@@ -47,4 +47,4 @@ class RepositoryBase<T extends mongoose.Document> implements IRead<T>, IWrite<T>
 }
 
 // tslint:disable-next-line:export-name
-export = RepositoryBase;
+export default RepositoryBase;

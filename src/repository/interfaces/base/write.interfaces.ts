@@ -1,4 +1,4 @@
-import mongoose = require('mongoose');
+import * as mongoose from 'mongoose';
 /**
  *
  *
@@ -12,4 +12,5 @@ interface IWrite<T> {
 
 }
 
-export = IWrite;
+// tslint:disable-next-line:export-name
+export default IWrite;

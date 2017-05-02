@@ -10,7 +10,7 @@ import * as express from 'express';
 const requestLogger: express.RequestHandler = (
     request: express.Request,
     response: express.Response,
-    next: express.NextFunction,
+    next: express.NextFunction
 ) => {
     // tslint:disable-next-line:no-console
     console.info(`Log => ${(new Date()).toUTCString()}|${request.method}|${request.url}|${request.ip}`);

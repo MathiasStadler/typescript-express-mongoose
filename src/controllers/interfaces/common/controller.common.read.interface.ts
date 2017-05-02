@@ -1,6 +1,11 @@
-import express = require("express");
+import * as express from 'express';
+/**
+ *
+ *
+ * @interface IReadCommonController
+ */
 interface IReadCommonController {
     retrieve: express.RequestHandler;
     findById: express.RequestHandler;
 }
-export = IReadCommonController;
+export default IReadCommonController;

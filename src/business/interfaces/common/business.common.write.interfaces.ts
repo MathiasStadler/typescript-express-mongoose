@@ -11,5 +11,5 @@ interface IWriteCommonBusiness<T> {
 
 }
 
-// tslint:disable-next-line:export-name
+// tslint:disable:export-name no-default-export
 export default IWriteCommonBusiness;

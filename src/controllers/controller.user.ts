@@ -1,7 +1,7 @@
-import express = require('express');
-import UserBusiness = require('./../business/business.user');
-import IBaseController = require('./interfaces/base/controller.base.interface');
-import IUserModel = require('./../models/interfaces/model.user.interface');
+import * as express from 'express';
+import UserBusiness from './../business/business.user';
+import IBaseController from './interfaces/base/controller.base.interface';
+import IUserModel from './../models/interfaces/model.user.interface';
 
 /**
  *
@@ -14,7 +14,7 @@ class UserController implements IBaseController<UserBusiness> {
     public create(req: express.Request, res: express.Response): void {
         try {
 
-            const user: IUserModel = req.body as IUserModel;
+            const user: IUserModel = req.body;
             const userBusiness = new UserBusiness();
             userBusiness.create(user, (error: any, result: any) => {
                 if (error) { res.send({ error: 'error' }); } else {
@@ -51,7 +51,7 @@ class UserController implements IBaseController<UserBusiness> {
 
             const _id: string = req.params._id;
             const userBusiness = new UserBusiness();
-            userBusiness.delete(_id, (error, result) => {
+            userBusiness.delete(_id, (error: any, result: any) => {
                 if (error) { res.send({ error: 'error' }); } else {
                     res.send({ success: 'success' });
                 }
@@ -66,7 +66,7 @@ class UserController implements IBaseController<UserBusiness> {
     public retrieve(req: express.Request, res: express.Response): void {
         try {
             const userBusiness = new UserBusiness();
-            userBusiness.retrieve((error, result) => {
+            userBusiness.retrieve((error: any, result: any) => {
                 if (error) { res.send({ error: 'error' }); } else {
                     res.send(result);
                 }
@@ -83,7 +83,7 @@ class UserController implements IBaseController<UserBusiness> {
 
             const _id: string = req.params._id;
             const userBusiness = new UserBusiness();
-            userBusiness.findById(_id, (error, result) => {
+            userBusiness.findById(_id, (error: any, result: any) => {
                 if (error) { res.send({ error: 'error' }); } else { res.send(result); }
             });
         } catch (e) {
@@ -94,4 +94,4 @@ class UserController implements IBaseController<UserBusiness> {
         }
     }
 }
-export = UserController;
+export default UserController;

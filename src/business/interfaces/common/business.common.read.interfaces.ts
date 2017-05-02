@@ -10,6 +10,5 @@ interface IReadCommonBusiness<T> {
 
 }
 
-// tslint:disable-next-line:export-name
-// tslint:disable-next-line:no-default-export
+// tslint:disable:export-name no-default-export
 export default IReadCommonBusiness;

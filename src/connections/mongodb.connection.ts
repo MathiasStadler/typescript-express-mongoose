@@ -1,39 +1,41 @@
-import Mongoose = require("mongoose");
-import Constants = require("../config/constants/db.config.constants");
+import * as mongoose from 'mongoose';
+
+import Constants from '../config/constants/db.config.constants';
 
 /**
  *
  *
  * @class Connection
  */
+// tslint:disable-next-line:no-stateless-class
 class Connection {
 
     public static mongooseInstance: any;
-    public static mongooseConnection: Mongoose.Connection;
+    public static mongooseConnection: mongoose.Connection;
 
-    public static connect(): Mongoose.Connection {
+    public static connect(): mongoose.Connection {
 
         if (this.mongooseInstance) { return this.mongooseInstance; }
 
-        this.mongooseConnection = Mongoose.connection;
+        this.mongooseConnection = mongoose.connection;
 
         if (this.mongooseConnection) {
 
             this.mongooseConnection.close(() => {
 
                 // tslint:disable-next-line:no-console
-                console.log("close to mongodb.");
+                console.log('close to mongodb.');
 
             });
 
         }
 
-        this.mongooseConnection.once("open", () => {
+        this.mongooseConnection.once('open', () => {
             // tslint:disable-next-line:no-console
-            console.log("Connect to mongodb.");
+            console.log('Connect to mongodb.');
         });
 
-        this.mongooseConnection.on("connected", () => {
+        this.mongooseConnection.on('connected', () => {
             // tslint:disable-next-line:no-console
             console.log('Connect to mongodb.');
         });
@@ -58,7 +60,7 @@ class Connection {
             });
         });
 
-        this.mongooseInstance = Mongoose.connect(Constants.DB_CONNECTION_STRING);
+        this.mongooseInstance = mongoose.connect(Constants.DB_CONNECTION_STRING);
         return this.mongooseInstance;
     }
 
@@ -69,4 +71,5 @@ class Connection {
 }
 
 Connection.connect();
-export = Connection;
+// tslint:disable:export-name no-default-export
+export default Connection;

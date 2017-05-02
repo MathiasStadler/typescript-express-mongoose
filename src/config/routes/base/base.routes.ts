@@ -3,8 +3,8 @@ import * as express from 'express';
 import * as logger from 'morgan';
 import * as path from 'path';
 
-import ServerMessages = require('./../../../config/constants/server.messages.constants');
-import UserRoutes = require('./../user.routes');
+import ServerMessages from './../../../config/constants/server.messages.constants';
+import UserRoutes from './../user.routes';
 
 import { Express } from 'express-serve-static-core';
 
@@ -27,4 +27,4 @@ class BaseRoutes {
     }
 }
 // tslint:disable-next-line:export-name
-export = BaseRoutes;
+export default BaseRoutes;

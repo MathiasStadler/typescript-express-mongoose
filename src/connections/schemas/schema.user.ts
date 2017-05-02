@@ -1,34 +1,38 @@
-import DataAccess = require("./../mongodb.connection");
-import IUserModel = require("./../../models/interfaces/model.user.interface");
+import DataAccess from './../mongodb.connection';
+import IUserModel from './../../models/interfaces/model.user.interface';
 import { Model } from "mongoose";
 
 const mongoose = DataAccess.mongooseInstance;
 const mongooseConnection = DataAccess.mongooseConnection;
 
+/**
+ *
+ *
+ * @class UserSchema
+ */
 class UserSchema {
 
     static get schema() {
         const schema = mongoose.Schema({
             email: {
-
                 require: true,
-                type: String,
+                type: String
 
             },
             name: {
-                type: String,
+                type: String
 
             },
             password: {
 
                 require: true,
-                type: String,
+                type: String
 
             },
             username: {
                 require: true,
-                type: String,
-            },
+                type: String
+            }
         });
         return schema;
     }
@@ -49,4 +53,4 @@ BookSchema.pre('save', next => {
 
 const schema: Model<IUserModel> = mongooseConnection.model<IUserModel>("Users", UserSchema.schema);
 
-export = schema;
+export default schema;

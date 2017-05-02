@@ -1,7 +1,7 @@
-import UserRepository = require('./../repository/user.repository');
-import IUserBusiness = require('./interfaces/business.user.interface');
-import IUserModel = require('./../models/interfaces/model.user.interface');
-import UserModel = require('./../models/model.user');
+import UserRepository from './../repository/user.repository';
+import IUserBusiness from './interfaces/business.user.interface';
+import IUserModel from './../models/interfaces/model.user.interface';
+import UserModel from './../models/model.user';
 
 /**
  *
@@ -47,4 +47,5 @@ class UserBusiness implements IUserBusiness {
 }
 
 Object.seal(UserBusiness);
-export = UserBusiness;
+// tslint:disable:export-name no-default-export
+export default UserBusiness;
