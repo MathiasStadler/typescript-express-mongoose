@@ -3,8 +3,8 @@ import * as express from 'express';
 import * as logger from 'morgan';
 import * as path from 'path';
 import * as requestLogger from './../../logger/request.logger';
-import MethodOverride from './../methodoveride.mw';
-import BaseRoutes from './../../routes/base/base.routes';
+import {MethodOverride} from './../methodoveride.mw';
+import {BaseRoutes} from './../../routes/base/base.routes';
 import { Express } from 'express-serve-static-core';
 
 /**
@@ -12,7 +12,9 @@ import { Express } from 'express-serve-static-core';
  *
  * @class MiddlewaresBase
  */
-class MiddlewaresBase {
+// tslint:disable-next-line:no-stateless-class
+// tslint:disable-next-line:export-name
+export class MiddlewaresBase {
 
     static get configuration(): Express {
         const app = express();
@@ -25,5 +27,4 @@ class MiddlewaresBase {
     }
 }
 Object.seal(MiddlewaresBase);
-// tslint:disable-next-line:export-name
-export = MiddlewaresBase;
+

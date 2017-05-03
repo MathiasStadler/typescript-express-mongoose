@@ -1,7 +1,7 @@
-import UserRepository from './../repository/user.repository';
-import IUserBusiness from './interfaces/business.user.interface';
-import IUserModel from './../models/interfaces/model.user.interface';
-import UserModel from './../models/model.user';
+import {UserRepository} from './../repository/user.repository';
+import {IUserBusiness} from './interfaces/business.user.interface';
+import {IUserModel} from './../models/interfaces/model.user.interface';
+import {UserModel} from './../models/model.user';
 
 /**
  *
@@ -9,7 +9,8 @@ import UserModel from './../models/model.user';
  * @class UserBusiness
  * @implements {IUserBusiness}
  */
-class UserBusiness implements IUserBusiness {
+// tslint:disable-next-line:export-name
+export class UserBusiness implements IUserBusiness {
     private userRepository: UserRepository;
 
     constructor() {
@@ -47,5 +48,3 @@ class UserBusiness implements IUserBusiness {
 }
 
 Object.seal(UserBusiness);
-// tslint:disable:export-name no-default-export
-export default UserBusiness;

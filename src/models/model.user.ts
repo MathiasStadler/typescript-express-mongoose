@@ -1,11 +1,12 @@
-import IUserModel from './interfaces/model.user.interface';
+import {IUserModel} from './interfaces/model.user.interface';
 
 /**
  *
  *
  * @class UserModel
  */
-class UserModel {
+// tslint:disable-next-line:export-name
+export class UserModel {
 
     private userModel: IUserModel;
 
@@ -33,6 +34,3 @@ class UserModel {
 }
 
 Object.seal(UserModel);
-
-// tslint:disable-next-line:no-default-export
-export default UserModel;

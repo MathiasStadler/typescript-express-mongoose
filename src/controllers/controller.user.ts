@@ -1,7 +1,7 @@
 import * as express from 'express';
-import UserBusiness from './../business/business.user';
-import IBaseController from './interfaces/base/controller.base.interface';
-import IUserModel from './../models/interfaces/model.user.interface';
+import {UserBusiness} from './../business/business.user';
+import {IBaseController} from './interfaces/base/controller.base.interface';
+import {IUserModel} from './../models/interfaces/model.user.interface';
 
 /**
  *
@@ -9,7 +9,8 @@ import IUserModel from './../models/interfaces/model.user.interface';
  * @class UserController
  * @implements {IBaseController<UserBusiness>}
  */
-class UserController implements IBaseController<UserBusiness> {
+// tslint:disable-next-line:export-name
+export class UserController implements IBaseController<UserBusiness> {
 
     public create(req: express.Request, res: express.Response): void {
         try {
@@ -94,4 +95,4 @@ class UserController implements IBaseController<UserBusiness> {
         }
     }
 }
-export default UserController;
+

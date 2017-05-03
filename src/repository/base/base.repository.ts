@@ -1,8 +1,9 @@
-import  IRead  from './../interfaces/base/read.interface';
-import  IWrite from './../interfaces/base/write.interfaces';
-import  IUserModel from  './../../models/interfaces/model.user.interface';
-
+import {IRead} from './../interfaces/base/read.interface';
+import {IWrite} from './../interfaces/base/write.interfaces';
+import {IUserModel} from './../../models/interfaces/model.user.interface';
 import * as mongoose from 'mongoose';
+
+//TODO remove * here
 
 /**
  *
@@ -12,7 +13,8 @@ import * as mongoose from 'mongoose';
  * @implements {IWrite<T>}
  * @template T
  */
-class RepositoryBase<T extends mongoose.Document> implements IRead<T>, IWrite<T> {
+// tslint:disable-next-line:export-name
+export class RepositoryBase<T extends mongoose.Document> implements IRead<T>, IWrite<T> {
 
     private model: mongoose.Model<mongoose.Document>;
 
@@ -46,5 +48,3 @@ class RepositoryBase<T extends mongoose.Document> implements IRead<T>, IWrite<T>
     }
 }
 
-// tslint:disable-next-line:export-name
-export default RepositoryBase;

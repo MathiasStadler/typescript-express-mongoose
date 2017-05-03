@@ -1,6 +1,6 @@
 import * as mongoose from 'mongoose';
 
-import Constants from '../config/constants/db.config.constants';
+import {Constants } from '../config/constants/db.config.constants';
 
 /**
  *
@@ -8,7 +8,8 @@ import Constants from '../config/constants/db.config.constants';
  * @class Connection
  */
 // tslint:disable-next-line:no-stateless-class
-class Connection {
+// tslint:disable-next-line:export-name
+export class DataAccess {
 
     public static mongooseInstance: any;
     public static mongooseConnection: mongoose.Connection;
@@ -65,11 +66,9 @@ class Connection {
     }
 
     public constructor() {
-        Connection.connect();
+        DataAccess.connect();
     }
 
 }
 
-Connection.connect();
-// tslint:disable:export-name no-default-export
-export default Connection;
+DataAccess.connect();

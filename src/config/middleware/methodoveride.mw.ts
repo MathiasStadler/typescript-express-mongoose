@@ -6,7 +6,8 @@ import * as express from 'express';
  * @class MethodOverride
  */
 // tslint:disable-next-line:no-stateless-class
-class MethodOverride {
+// tslint:disable-next-line:export-name
+export class MethodOverride {
     public static configuration(): any {
         const app = express();
         app.use(methodOverride('X-HTTP-Method'));
@@ -17,6 +18,3 @@ class MethodOverride {
     }
 }
 Object.seal(MethodOverride);
-
-// tslint:disable:no-default-export export-name
-export default MethodOverride;

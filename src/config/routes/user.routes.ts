@@ -1,7 +1,7 @@
 import * as express from 'express';
 import { Express, Router } from 'express-serve-static-core';
-import UserController from './../../controllers/controller.user';
-import ServerMessages from './../../config/constants/server.messages.constants';
+import {UserController} from './../../controllers/controller.user';
+import {ServerMessages} from './../../config/constants/server.messages.constants';
 
 const router: Router = express.Router();
 
@@ -10,7 +10,8 @@ const router: Router = express.Router();
  *
  * @class UserRoutes
  */
-class UserRoutes {
+// tslint:disable-next-line:export-name
+export class UserRoutes {
     private userController: UserController;
 
     constructor() {
@@ -31,5 +32,4 @@ class UserRoutes {
 }
 
 Object.seal(UserRoutes);
-// tslint:disable:export-name no-default-export
-export default UserRoutes;
+

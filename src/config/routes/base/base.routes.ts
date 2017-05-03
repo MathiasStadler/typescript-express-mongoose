@@ -3,8 +3,8 @@ import * as express from 'express';
 import * as logger from 'morgan';
 import * as path from 'path';
 
-import ServerMessages from './../../../config/constants/server.messages.constants';
-import UserRoutes from './../user.routes';
+import {ServerMessages} from './../../../config/constants/server.messages.constants';
+import {UserRoutes} from './../user.routes';
 
 import { Express } from 'express-serve-static-core';
 
@@ -14,7 +14,8 @@ const app = express();
  *
  * @class BaseRoutes
  */
-class BaseRoutes {
+// tslint:disable-next-line:export-name
+export class BaseRoutes {
     get routes(): Express {
         app.get('/', (req: any, res: any) => {
             res.send(ServerMessages.INVALID_ENDPOINT);
@@ -26,5 +27,4 @@ class BaseRoutes {
         return app;
     }
 }
-// tslint:disable-next-line:export-name
-export default BaseRoutes;
+

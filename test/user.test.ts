@@ -3,13 +3,13 @@ import * as chai from 'chai';
 import * as mocha from 'mocha';
 
 
-import UserSchema from './../src/connections/schemas/schema.user';
+import {schema} from './../src/connections/schemas/schema.user';
 
 //import  schema  from './../src/connections/schemas/schema.user';
 
 import chaiHttp = require('chai-http');
 
-import app from '../src/app';
+import {App} from '../src/app';
 
 // import mlog from "mocha-logger";
 
@@ -18,7 +18,7 @@ import app from '../src/app';
 
 import * as notifier from 'node-notifier';
 
-import IUserModel from './../src/models/interfaces/model.user.interface';
+import {IUserModel} from './../src/models/interfaces/model.user.interface';
 
 chai.use(chaiHttp);
 
@@ -29,7 +29,7 @@ const should = chai.should();
 describe('delete all users', () => {
 
     beforeEach((done) => { // Before each test we empty the database
-        UserSchema.remove({}, (err: any) => {
+        schema.remove({}, (err: any) => {
             done();
         });
     });
@@ -37,7 +37,7 @@ describe('delete all users', () => {
     // found here
     // https://github.com/elliotf/mocha-mongoose
     it('user collection is empty', (done) => {
-        UserSchema.find({}, (err, models) => {
+        schema.find({}, (err, models) => {
             expect(models).to.have.length(0);
             done();
         });
@@ -46,7 +46,7 @@ describe('delete all users', () => {
 
 describe('GET root ', () => {
     it('get root', () => {
-        return chai.request(app).get('/')
+        return chai.request(App).get('/')
             .then((res) => {
     //            console.log(res);
                 expect(res.status).to.equal(200);
@@ -58,7 +58,7 @@ describe('GET invalid endpoint ', () => {
 
     it('get root', () => {
 
-        return chai.request(app).get('/api/')
+        return chai.request(App).get('/api/')
             .then((res) => {
 
 console.log(res);
@@ -73,7 +73,7 @@ console.log(res);
 
 describe('GET api/v1/user', () => {
     it('responds with JSON array', () => {
-        return chai.request(app).get('/api/v1/user')
+        return chai.request(App).get('/api/v1/user')
             .then((res) => {
                 expect(res.status).to.equal(200);
                 // tslint:disable-next-line:no-unused-expression
@@ -95,9 +95,9 @@ describe('POST api/v1/user', () => {
 
         // from here
         // https://scotch.io/tutorials/test-a-node-restful-api-with-mocha-and-chai
-        chai.request(app)
+        chai.request(App)
             .post('/api/v1/user')
-            .set('Content-Type', 'application/json')
+            .set('Content-Type', 'Application/json')
             .send(user)
             .end((err, res) => {
                // console.log(res);
@@ -111,7 +111,7 @@ describe('POST api/v1/user', () => {
 
 describe('GET api/v1/user', () => {
     it('get user at JSON array', () => {
-        return chai.request(app).get('/api/v1/user')
+        return chai.request(App).get('/api/v1/user')
             .then((res) => {
                 expect(res.status).to.equal(200);
                 // tslint:disable-next-line:no-unused-expression
@@ -127,8 +127,8 @@ describe('GET api/v1/user', () => {
 describe('/GET/:id user', () => {
     it('it should GET a user by the given id', (done) => {
         const user: IUserModel = ({ name: 'hallo', email: 'hallo@dudoof.de', username: 'hallo', password: '' }) as IUserModel;
-        UserSchema.create(user, (error: any, requser: any) => {
-            chai.request(app)
+        schema.create(user, (error: any, requser: any) => {
+            chai.request(App)
                 .get('/api/v1/user/' + requser._id)
                 .end((err, res) => {
                     expect(res.status).to.equal(200);
@@ -148,8 +148,8 @@ describe('/GET/:id user', () => {
 describe('Update /PUT/:id user', () => {
     it('it should UPDATE a book given the id', (done) => {
         const user: IUserModel = ({ name: 'hallo', email: 'hallo@dudoof.de', username: 'hallo', password: '' }) as IUserModel;
-        UserSchema.create(user, (error: any, requser: any) => {
-            chai.request(app)
+        schema.create(user, (error: any, requser: any) => {
+            chai.request(App)
                 .put('/api/v1/user/' + requser._id)
                 .send({ name: 'uhallo', email: 'uhallo@dudoof.de', username: 'uhallo' })
                 .end((err, res) => {
@@ -168,8 +168,8 @@ describe('Update /PUT/:id user', () => {
 describe(' delete DELETE/:id user', () => {
     it('it should DELETE a user by the given id', (done) => {
         const user: IUserModel = ({ name: 'hallo', email: 'hallo@dudoof.de', username: 'hallo', password: '' }) as IUserModel;
-        UserSchema.create(user, (error: any, requser: any) => {
-            chai.request(app)
+        schema.create(user, (error: any, requser: any) => {
+            chai.request(App)
                 .del('/api/v1/user/' + requser._id)
                 .end((err, res) => {
                     expect(res.status).to.equal(200);
