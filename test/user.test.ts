@@ -1,30 +1,26 @@
-/* tslint:disable */
-import * as chai from 'chai';
-import * as mocha from 'mocha';
-
-
+// tslint:disable-next-line:missing-jsdoc
+//FROM HERE http://jonnyreeves.co.uk/2015/using-chai-with-typescript-and-mocha/
+// old import { expect } from 'chai';
+// tslint:disable-next-line:missing-jsdoc
+// tslint:disable-next-line:no-require-imports
+import * as mocha = require('mocha');
+import {expect, should} from 'chai';
 import {schema} from './../src/connections/schemas/schema.user';
-
-//import  schema  from './../src/connections/schemas/schema.user';
-
-import chaiHttp = require('chai-http');
-
 import {App} from '../src/app';
-
-// import mlog from "mocha-logger";
-
-// const notifier = require("node-notifier");
-// const path = require("path");
-
 import * as notifier from 'node-notifier';
-
 import {IUserModel} from './../src/models/interfaces/model.user.interface';
+
+import {chai} from 'chai';
+import chaiHttp from 'chai-http';
 
 chai.use(chaiHttp);
 
-const expect = chai.expect;
+// tslint:disable-next-line:no-http-string
+const URL = 'http://localhost:5000';
 
-const should = chai.should();
+//old const expect = chai.expect;
+// tslint:disable-next-line:mocha-no-side-effect-code
+//old const should = chai.should();
 
 describe('delete all users', () => {
 
@@ -46,7 +42,8 @@ describe('delete all users', () => {
 
 describe('GET root ', () => {
     it('get root', () => {
-        return chai.request(App).get('/')
+        // tslint:disable-next-line:no-backbone-get-set-outside-model
+        return chai.request(URL).get('/')
             .then((res) => {
     //            console.log(res);
                 expect(res.status).to.equal(200);
@@ -58,9 +55,11 @@ describe('GET invalid endpoint ', () => {
 
     it('get root', () => {
 
-        return chai.request(App).get('/api/')
+        // tslint:disable-next-line:no-backbone-get-set-outside-model
+        return chai.request(URL).get('/api/')
             .then((res) => {
 
+// tslint:disable-next-line:no-console
 console.log(res);
 //expect(res).should.be.html;
 
@@ -73,7 +72,8 @@ console.log(res);
 
 describe('GET api/v1/user', () => {
     it('responds with JSON array', () => {
-        return chai.request(App).get('/api/v1/user')
+        // tslint:disable-next-line:no-backbone-get-set-outside-model
+        return chai.request(URL).get('/api/v1/user')
             .then((res) => {
                 expect(res.status).to.equal(200);
                 // tslint:disable-next-line:no-unused-expression
@@ -95,6 +95,7 @@ describe('POST api/v1/user', () => {
 
         // from here
         // https://scotch.io/tutorials/test-a-node-restful-api-with-mocha-and-chai
+        // tslint:disable-next-line:no-backbone-get-set-outside-model
         chai.request(App)
             .post('/api/v1/user')
             .set('Content-Type', 'Application/json')
@@ -111,6 +112,7 @@ describe('POST api/v1/user', () => {
 
 describe('GET api/v1/user', () => {
     it('get user at JSON array', () => {
+        // tslint:disable-next-line:no-backbone-get-set-outside-model
         return chai.request(App).get('/api/v1/user')
             .then((res) => {
                 expect(res.status).to.equal(200);
@@ -147,6 +149,7 @@ describe('/GET/:id user', () => {
 
 describe('Update /PUT/:id user', () => {
     it('it should UPDATE a book given the id', (done) => {
+        // tslint:disable-next-line:prefer-type-cast
         const user: IUserModel = ({ name: 'hallo', email: 'hallo@dudoof.de', username: 'hallo', password: '' }) as IUserModel;
         schema.create(user, (error: any, requser: any) => {
             chai.request(App)
